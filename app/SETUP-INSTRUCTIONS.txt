@@ -1,0 +1,85 @@
+=====================================================
+PROFESSIONAL ADMIN DASHBOARD - SIMPLE SETUP STEPS
+=====================================================
+
+This replaces the basic admin dashboard with an upgraded one:
+
+  - Sidebar navigation (Dashboard / New Article / View Site / Log Out)
+  - Stat cards at the top (Total, Published, Drafts, Categories)
+  - Search box + Published/Draft filter tabs
+  - A real formatting toolbar when writing articles
+    (Bold, Italic, Headings, Bullet/Numbered lists, Quote, Link)
+    -> you no longer have to type raw HTML tags by hand
+  - Image preview when you paste a cover image URL
+  - Clean popup confirmation before deleting (instead of a browser alert)
+  - Small "toast" notifications ("Saved", "Deleted", etc.)
+
+If you already installed the BASIC admin dashboard from before,
+these files simply REPLACE some of them and ADD a few new ones.
+If you're starting fresh, that's fine too - just follow the steps below.
+
+-----------------------------------------------------
+STEP 1: Copy these files into your project
+-----------------------------------------------------
+
+Copy every file below into the SAME path in your project
+(overwrite if it already exists, create folders if they don't exist):
+
+  app/admin/layout.tsx              <- NEW
+  app/admin/page.tsx                <- replace
+  app/admin/login/page.tsx          <- replace
+  app/admin/new/page.tsx            <- replace
+  app/admin/edit/[id]/page.tsx      <- replace
+  components/ArticleForm.tsx        <- replace
+  components/RichTextEditor.tsx     <- NEW
+  components/ConfirmDialog.tsx      <- NEW
+  components/Toast.tsx              <- NEW
+  lib/types.ts                      <- same as before (no change needed if you already have it)
+
+Nothing else in your project needs to change. No new environment
+variables, no new packages to install.
+
+-----------------------------------------------------
+STEP 2 (only if you haven't done this already): Add delete permission
+-----------------------------------------------------
+
+1. Go to Supabase -> SQL Editor -> New query
+2. Paste in the contents of "add-delete-policy.sql" (included here)
+3. Click Run
+
+Skip this step if you already ran it when setting up the first
+version of the admin dashboard.
+
+-----------------------------------------------------
+STEP 3 (only if you haven't done this already): Create your login
+-----------------------------------------------------
+
+1. Supabase -> Authentication -> Users -> Add user -> Create new user
+2. Enter an email + password (this is YOUR login)
+3. Check "Auto Confirm User"
+4. Click Create user
+
+Skip this step if you already created your admin login before.
+
+-----------------------------------------------------
+STEP 4: Push to GitHub
+-----------------------------------------------------
+
+Commit and push these files the same way you normally do.
+Vercel will redeploy automatically.
+
+-----------------------------------------------------
+STEP 5: Try it out
+-----------------------------------------------------
+
+1. Go to yourdomain.com/admin
+2. Log in
+3. You'll now see the new dashboard with stat cards, search, and filters
+4. Click "+ New Article" to try the new formatting toolbar
+
+-----------------------------------------------------
+NOTE ABOUT WRITING CONTENT
+-----------------------------------------------------
+You now write articles by clicking the toolbar buttons (Bold, H2, H3,
+bullet lists, quote, link) instead of typing HTML tags - it will
+look and format correctly on your site automatically.

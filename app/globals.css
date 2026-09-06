@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-cd-text antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  article p, article li, article blockquote {
+    font-family: var(--font-merriweather), Georgia, serif;
+  }
+}
+
+@layer components {
+  .article-body p {
+    @apply text-base leading-relaxed text-cd-text mb-6;
+  }
+  .article-body h2 {
+    @apply text-2xl font-bold mt-10 mb-4 text-cd-text;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  .article-body h3 {
+    @apply text-xl font-bold mt-8 mb-3 text-cd-text;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  .article-body ul, .article-body ol {
+    @apply mb-6 pl-7;
+  }
+  .article-body li {
+    @apply mb-2 leading-relaxed;
+  }
+  .article-body blockquote {
+    @apply border-l-4 border-primary pl-6 my-8 italic text-lg text-cd-muted;
+  }
+  .article-body strong {
+    @apply text-cd-text font-bold;
+  }
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrap {
+  animation: ticker 40s linear infinite;
+}
+
+.ticker-wrap:hover {
+  animation-play-state: paused;
+}
